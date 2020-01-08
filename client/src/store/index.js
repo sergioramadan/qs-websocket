@@ -5,9 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    value: null,
-    interval: null,
-    currency: null
+    value: 0,
+    interval: 5,
+    currency: null,
+    price: null
   },
   getters: {
     value(state) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     currency(state) {
       return state.currency;
+    },
+    price(state) {
+      return state.price;
     }
   },
   mutations: {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     },
     setCurrency(state, currency) {
       state.currency = currency;
+    },
+    setPrice(state, price) {
+      state.price = price;
     }
   },
   actions: {
