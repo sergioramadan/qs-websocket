@@ -14,6 +14,14 @@ var server = app.listen(4000, function() {
 // Socket Setup
 var io = socket(server);
 
-io.on('connection', function() {
-    console.log('made socket connection');
+io.on('connection', function(socket) {
+    console.log('made socket connection', socket.id);
+    
+    socket.emit('setPrice', 200);
+
+    socket.on('watch', function(data) {
+        let { interval, value, currency } = data;
+        
+        socket.emit('setPrice', newPrice);
+    });
 })

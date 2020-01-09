@@ -47,6 +47,9 @@ export default new Vuex.Store({
     },
     setCurrency({ commit }, currency) {
       commit("setCurrency", currency);
+    },
+    socket_setPrice({ commit }, price) {
+      commit("setPrice", price);
     }
   }
 });

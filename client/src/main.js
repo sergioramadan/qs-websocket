@@ -11,11 +11,9 @@ Vue.use(
     connection: "http://localhost:4000", //options object is Optional
     vuex: {
       store,
-      actionPrefix: "SOCKET_",
-      mutationPrefix: "SOCKET_"
+      actionPrefix: "socket_",
+      mutationPrefix: "socket_"
     }
-    // ,
-    // options: { path: "/my-app/" } //Optional Options
   })
 );
 
