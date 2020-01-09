@@ -8,7 +8,7 @@
           type="number"
           id="interval"
           :value="actualInterval"
-          @keuyp="setInterval"
+          @input="setInterval"
         />
       </div>
       <div>
@@ -18,7 +18,7 @@
           type="text"
           id="value"
           :value="actualValue"
-          @keyup="setValue(this.value)"
+          @input="setValue"
         />
       </div>
       <div>
@@ -27,7 +27,7 @@
           name="currency"
           id="currency"
           :value="actualCurrency"
-          @change="setCurrency(this.value)"
+          @change="setCurrency"
         >
           <option v-for="(currency, id) in currencyList" :key="id" :value="id">
             {{ currency.symbol }}
@@ -49,9 +49,6 @@ export default {
     };
   },
   computed: {
-    //currencyList() {
-    //  return this.$store.getters.currencyList;
-    //},
     actualValue() {
       return this.$store.getters.value;
     },
@@ -63,18 +60,19 @@ export default {
     }
   },
   methods: {
-    setInterval(interval) {
-      this.$store.dispatch("setInterval", interval);
+    setInterval(event) {
+      this.$store.dispatch("setInterval", event.target.value);
     },
-    setValue(value) {
-      this.$store.dispatch("setValue", value);
+    setValue(event) {
+      this.$store.dispatch("setValue", event.target.value);
     },
-    setCurrency(currency) {
-      this.$store.dispatch("setCurrency", currency);
+    setCurrency(event) {
+      this.$store.dispatch("setCurrency", event.target.value);
     }
   },
   async created() {
     this.currencyList = await http.get("CURRENCIES");
+    this.$store.dispatch("setCurrency", Object.keys(this.currencyList)[0]);
   }
 };
 </script>
