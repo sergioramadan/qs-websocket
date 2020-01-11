@@ -8,7 +8,6 @@ var server = app.listen(4000, function() {
 });
 
 // Static Files
-// app.use(express.static('public'));
 // app.use(express.static('client/dist'));
 
 // Socket Setup
