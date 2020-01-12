@@ -1,7 +1,7 @@
 <template>
   <div id="main-form">
     <form>
-      <div>
+      <div class="col-s-5">
         <label for="interval">Interval</label>
         <input
           name="interval"
@@ -11,7 +11,7 @@
           @input="setInterval"
         />
       </div>
-      <div>
+      <div class="col-s-5">
         <label for="value">Value</label>
         <input
           name="value"
@@ -21,7 +21,7 @@
           @input="setValue"
         />
       </div>
-      <div>
+      <div class="col-s-2">
         <label for="currency">Currency</label>
         <select
           name="currency"
@@ -78,21 +78,8 @@ export default {
 </script>
 
 <style lang="scss">
-form {
-  div {
-    display: inline-block;
-    width: 30%;
-    min-width: 200px;
-    margin: 10px;
-  }
-
-  label {
-    display: block;
-  }
-
-  select,
-  input {
-    border: 1px solid grey;
-  }
+#main-form {
+  background-color: #ffeeaa;
+  padding: 20px;
 }
 </style>

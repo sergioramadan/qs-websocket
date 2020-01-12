@@ -16,29 +16,17 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin: 0 auto;
-
-  form {
-    div {
-      display: inline-block;
-      width: 30%;
-      min-width: 200px;
-      margin: 10px;
-    }
-
-    label {
-      display: block;
-    }
-
-    select,
-    input {
-      border: 1px solid grey;
-    }
-  }
+  min-height: 100vh;
+  background-color: #ffffee;
 }
 </style>

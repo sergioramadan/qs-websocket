@@ -1,0 +1,31 @@
+h1 {
+  display: inline-block;
+}
+
+form {
+  select,
+  input {
+    background: #fafafa;
+    border: 1px solid grey;
+    display: inline-block;
+    height:  22px;
+    min-width: 50px;
+  }
+
+  label,
+  input,
+  select {
+    margin: 0 5%;
+    width: 88%;
+    padding: 0 1%;
+    border-radius: 5px 5px;
+  }
+
+  label {
+    display: block;
+  }
+
+  select {
+    width: 90%;
+  }
+}

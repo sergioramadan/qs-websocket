@@ -4,6 +4,8 @@ import VueSocketIO from "vue-socket.io";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+import "./assets/media-queries.scss";
+import "./assets/styles.scss";
 
 Vue.use(
   new VueSocketIO({
