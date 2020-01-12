@@ -17,23 +17,23 @@ var io = socket(server);
 io.on('connection', function(socket) {
     console.log('made socket connection', socket.id);
 
-    console.log(helpers.currencyWatcher.setWatcher);
+    console.log(helpers.currencyWatcher().setWatcher);
+    watchlist[socket.id] = helpers.currencyWatcher();
+    
+    console.log(watchlist);
     socket.on('watch', function(data) {
         let { interval, value, currency } = data;
 
-        if (!watchlist[socket.id]) {
-            watchlist[socket.id] = helpers.currencyWatcher();
-        } else {
-            watchlist[socket.id].stopWatcher();
-        }
-
+        watchlist[socket.id].stopWatcher();
         watchlist[socket.id].setWatcher({ socket, interval, value, currency });
         watchlist[socket.id].startWatcher();
     });
 
     socket.on('disconect', function() {
         console.log('user was disconected');
-        watchlist[socket.id].stopWatcher();
-        delete watchlist[socket.id];
+        if (watchlist[socket.id]) {
+            watchlist[socket.id].stopWatcher();
+            delete watchlist[socket.id];
+        }
     })
 })

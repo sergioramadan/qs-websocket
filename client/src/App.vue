@@ -11,6 +11,22 @@ export default {
   name: "qs-ws-exercise",
   components: {
     Home
+  },
+  methods: {
+    disconectSocket() {
+      console.log("trigger disconect");
+      this.$socket.emit("disconect");
+    }
+  },
+  created() {
+    window.addEventListener(
+      "beforeunload",
+      () => {
+        console.log("refreshing");
+        this.disconectSocket();
+      },
+      false
+    );
   }
 };
 </script>
