@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div>
-      <p>The amount of Bitcoins for <b>{{ actualCurrency }} {{ actualValue }}</b></p>
+      <p>
+        The amount of Bitcoins for <b>{{ actualCurrency }} {{ actualValue }}</b>
+      </p>
       <h2>{{ actualPrice }}</h2>
     </div>
   </div>
