@@ -39,14 +39,32 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setValue({ commit }, value) {
+    setValue({ commit, state }, value) {
       commit("setValue", value);
+      let data = {
+        currency: state.currency,
+        interval: state.interval,
+        value
+      };
+      this._vm.$socket.emit("watch", data);
     },
-    setInterval({ commit }, interval) {
+    setInterval({ commit, state }, interval) {
       commit("setInterval", interval);
+      let data = {
+        currency: state.currency,
+        interval: interval,
+        value: state.value
+      };
+      this._vm.$socket.emit("watch", data);
     },
-    setCurrency({ commit }, currency) {
+    setCurrency({ commit, state }, currency) {
       commit("setCurrency", currency);
+      let data = {
+        currency: currency,
+        interval: state.interval,
+        value: state.value
+      };
+      this._vm.$socket.emit("watch", data);
     },
     socket_setPrice({ commit }, price) {
       commit("setPrice", price);

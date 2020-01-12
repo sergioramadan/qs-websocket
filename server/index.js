@@ -23,7 +23,6 @@ io.on('connection', function(socket) {
     console.log(watchlist);
     socket.on('watch', function(data) {
         let { interval, value, currency } = data;
-
         watchlist[socket.id].stopWatcher();
         watchlist[socket.id].setWatcher({ socket, interval, value, currency });
         watchlist[socket.id].startWatcher();

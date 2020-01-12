@@ -13,7 +13,7 @@ axios.interceptors.response.use(
 );
 
 const instance = axios.create({
-  timeout: 1000
+  timeout: 2000
 });
 
 const createRoute = (serviceMethod, params = null) => {

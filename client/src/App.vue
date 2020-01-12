@@ -34,6 +34,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
+  background-color: #ffffee;
 }
 
 #app {
@@ -42,7 +43,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin: 0 auto;
+  width: 100%;
+  max-width: 1080px;
   min-height: 100vh;
-  background-color: #ffffee;
+  background-color: #ffffdd;
 }
 </style>

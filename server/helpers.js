@@ -8,7 +8,7 @@ function currencyWatcher () {
 
     const getCurrencyService = async () => { 
         return new Promise((resolve, reject) => {
-            request(`https://https://blockchain.info/tobtc?currency=${this.currency}&value=${this.value}`, { json: true }, (err, res, body) => {
+            request(`https://blockchain.info/tobtc?currency=${this.currency}&value=${this.value}`, { json: true }, (err, res, body) => {
                 if (err) reject(err)
                 resolve(body)
             });
@@ -17,7 +17,7 @@ function currencyWatcher () {
 
     const recursiveInterval = async () => {
         let newPrice = await getCurrencyService();
-        socket.emit('setPrice', newPrice);
+        this.socket.emit('setPrice', newPrice);
     };
 
     const setWatcher = ({ currency, socket, value, interval }) => {
@@ -39,7 +39,7 @@ function currencyWatcher () {
         setWatcher,
         startWatcher,
         stopWatcher
-    }
+    };
 }
 
 module.exports = { currencyWatcher };
