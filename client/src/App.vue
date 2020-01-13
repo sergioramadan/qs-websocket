@@ -14,7 +14,6 @@ export default {
   },
   methods: {
     disconectSocket() {
-      console.log("trigger disconect");
       this.$socket.emit("disconect");
     }
   },
@@ -22,7 +21,6 @@ export default {
     window.addEventListener(
       "beforeunload",
       () => {
-        console.log("refreshing");
         this.disconectSocket();
       },
       false

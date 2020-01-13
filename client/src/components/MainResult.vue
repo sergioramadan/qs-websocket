@@ -4,7 +4,7 @@
       <p>
         The amount of Bitcoins for <b>{{ actualCurrency }} {{ actualValue }}</b>
       </p>
-      <h2>{{ actualPrice }}</h2>
+      <span class="actualPrice">{{ actualPrice }}</span>
     </div>
   </div>
 </template>
@@ -26,4 +26,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.actualPrice {
+  font-size: 64px;
+  font-weight: bold;
+}
+</style>

@@ -1,38 +1,38 @@
 <template>
   <div id="main-form">
     <form>
-      <div class="col-s-5">
-        <label for="interval">Interval</label>
-        <input
+      <div class="col-s-1">
+        <Input
           name="interval"
           type="number"
           id="interval"
+          label="Interval"
           :value="actualInterval"
           @input="setInterval"
         />
       </div>
-      <div class="col-s-5">
-        <label for="value">Value</label>
-        <input
+      <div class="col-s-4">
+        <Input
           name="value"
           type="text"
           id="value"
+          label="Value"
           :value="actualValue"
           @input="setValue"
         />
       </div>
       <div class="col-s-2">
-        <label for="currency">Currency</label>
-        <select
+        <Select
           name="currency"
           id="currency"
+          label="Currency"
           :value="actualCurrency"
           @change="setCurrency"
         >
           <option v-for="(currency, id) in currencyList" :key="id" :value="id">
-            {{ currency.symbol }}
+            {{ id }} - {{ currency.symbol }}
           </option>
-        </select>
+        </Select>
       </div>
     </form>
   </div>
@@ -40,9 +40,15 @@
 
 <script>
 import http from "../services/http.services";
+import Input from "./commons/Input";
+import Select from "./commons/Select";
 
 export default {
   name: "main-form",
+  components: {
+    Input,
+    Select
+  },
   data() {
     return {
       currencyList: {}
@@ -60,19 +66,19 @@ export default {
     }
   },
   methods: {
-    setInterval(event) {
-      this.$store.dispatch("setInterval", event.target.value);
+    setInterval(value) {
+      this.$store.dispatch("setInterval", value);
     },
-    setValue(event) {
-      this.$store.dispatch("setValue", event.target.value);
+    setValue(value) {
+      this.$store.dispatch("setValue", value);
     },
-    setCurrency(event) {
-      this.$store.dispatch("setCurrency", event.target.value);
+    setCurrency(value) {
+      this.$store.dispatch("setCurrency", value);
     }
   },
   async created() {
     this.currencyList = await http.get("CURRENCIES");
-    this.$store.dispatch("setCurrency", Object.keys(this.currencyList)[0]);
+    this.setCurrency(Object.keys(this.currencyList)[0]);
   }
 };
 </script>

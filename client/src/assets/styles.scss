@@ -12,6 +12,11 @@ form {
     min-width: 50px;
   }
 
+  label {
+    display: block;
+    text-align: left;
+  }
+
   label,
   input,
   select {
@@ -19,10 +24,6 @@ form {
     width: 88%;
     padding: 0 1%;
     border-radius: 5px 5px;
-  }
-
-  label {
-    display: block;
   }
 
   select {

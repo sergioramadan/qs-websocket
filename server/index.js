@@ -1,35 +1,34 @@
-var express = require('express');
-var socket = require('socket.io');
-var helpers = require('./helpers.js')
+const express = require('express');
+const socket = require('socket.io');
+const helpers = require('./helpers.js')
 
 //App Setup
-var app = express();
-var server = app.listen(4000, function() {
+const app = express();
+const server = app.listen(4000, function() {
     console.log("Listening port 4000");
 });
 
 // var connectedUsers = {};
-var watchlist = {};
+const watchlist = {};
 
 // Socket Setup
-var io = socket(server);
+const io = socket(server);
 
 io.on('connection', function(socket) {
-    console.log('made socket connection', socket.id);
-
-    console.log(helpers.currencyWatcher().setWatcher);
+    
+    // Add connection to the accepted connections to watch
     watchlist[socket.id] = helpers.currencyWatcher();
     
-    console.log(watchlist);
+    // Add watch event when user updates parameters for data to watch
     socket.on('watch', function(data) {
-        let { interval, value, currency } = data;
+        const { interval, value, currency } = data;
         watchlist[socket.id].stopWatcher();
         watchlist[socket.id].setWatcher({ socket, interval, value, currency });
         watchlist[socket.id].startWatcher();
     });
 
+    // Add event to remove connection from list when user disconect
     socket.on('disconect', function() {
-        console.log('user was disconected');
         if (watchlist[socket.id]) {
             watchlist[socket.id].stopWatcher();
             delete watchlist[socket.id];
